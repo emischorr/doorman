@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Enrico Mischorr">
+    <title>Doorman</title>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="flash-box">
+        <%
+          info = get_flash(@conn, :info)
+          success = get_flash(@conn, :success)
+          warn = get_flash(@conn, :warn)
+          error = get_flash(@conn, :error)
+        %>
+        <%= if info do %>
+        <p class="alert alert-info centered" role="alert"><%= info %></p>
+        <% end %>
+        <%= if success do %>
+        <p class="alert alert-success centered" role="alert"><%= success %></p>
+        <% end %>
+        <%= if warn do %>
+        <p class="alert alert-warning centered" role="alert"><%= warn %></p>
+        <% end %>
+        <%= if error do %>
+        <p class="alert alert-danger centered" role="alert"><%= error %></p>
+        <% end %>
+      </div>
+
+      <main role="main" id="content">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+    </div>
+
+    <footer id="footer">
+      <span>Made by Enrico Mischorr</span>
+      <span>-</span>
+      <a href="https://www.mischorr.com">www.mischorr.com</a>
+    </footer>
+
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </body>
+</html>

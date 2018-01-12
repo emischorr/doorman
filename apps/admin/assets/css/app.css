@@ -1,0 +1,12 @@
+/* This file is for your main application css. */
+
+@import "./phoenix.css";
+
+ul.menu {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+ul.menu li {
+  margin-right: 20px;
+}
