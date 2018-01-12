@@ -1,4 +1,3 @@
 # Doorman
 
-**TODO: Add description**
-
+**Authentication & authorization service written in Elixir**

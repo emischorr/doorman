@@ -44,6 +44,7 @@ defmodule Api.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:guardian, "~> 1.0"},
+      {:ja_serializer, "~> 0.13.0"},
       {:data, in_umbrella: true}
     ]
   end
