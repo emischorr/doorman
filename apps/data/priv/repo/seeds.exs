@@ -6,11 +6,12 @@ alias Data.Repo
 alias Data.Models.{Tenant, User}
 
 # Basic Data
+IO.puts "== Seeding Database =="
 
-admin_tenant = Repo.insert! %Tenant{
+admin_tenant = Repo.insert(%Tenant{
   code: "admin",
   name: "Admin",
-}
+}) |> IO.inspect
 
 admin_user_change = User.changeset %User{}, %{
   name: "Admin",
@@ -18,4 +19,4 @@ admin_user_change = User.changeset %User{}, %{
   password: "admin",
   tenant_id: admin_tenant.id
 }
-admin_user = Repo.insert! admin_user_change
+admin_user = Repo.insert(admin_user_change) |> IO.inspect

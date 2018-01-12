@@ -33,6 +33,7 @@ defmodule Data.Models.Tenant do
     model
     |> cast(params, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
+    |> unique_constraint(:code)
     |> validate_length(:code, min: 3)
     |> validate_length(:name, min: 3)
   end
