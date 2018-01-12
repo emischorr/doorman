@@ -11,7 +11,7 @@ IO.puts "== Seeding Database =="
 admin_tenant = Repo.insert(%Tenant{
   code: "admin",
   name: "Admin",
-}) |> IO.inspect
+}, on_conflict: :nothing)
 
 admin_user_change = User.changeset %User{}, %{
   name: "Admin",
@@ -19,4 +19,4 @@ admin_user_change = User.changeset %User{}, %{
   password: "admin",
   tenant_id: admin_tenant.id
 }
-admin_user = Repo.insert(admin_user_change) |> IO.inspect
+admin_user = Repo.insert(admin_user_change, , on_conflict: :nothing)
