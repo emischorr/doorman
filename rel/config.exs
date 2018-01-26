@@ -52,7 +52,7 @@ release :doorman do
     :runtime_tools,
     admin: :permanent,
     api: :permanent,
-    data: :permanent
+    data: :permanent,
+    master_proxy: :permanent,
   ]
 end
-

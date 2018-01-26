@@ -8,8 +8,8 @@ defmodule MasterProxy.Application do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    port = (System.get_env("PORT") || "4444") |> String.to_integer
-    cowboy = Plug.Adapters.Cowboy.child_spec(:http, MasterProxy.Plug, [], [port: port])
+    port = (System.get_env("PORT") || "4004") |> String.to_integer
+    cowboy = Plug.Adapters.Cowboy.child_spec(scheme: :http, plug: MasterProxy.Plug, options: [port: port])
 
     children = [
       cowboy
