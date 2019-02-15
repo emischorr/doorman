@@ -49,7 +49,7 @@ defmodule Data.Models.User do
     |> validate_format(:email, ~r/@/)
     |> validate_length(:password, min: 5)
     |> validate_confirmation(:password, message: "Password does not match")
-    |> unique_constraint([:login, :tenant_id], message: "Login already taken")
+    |> unique_constraint(:login, name: :users_login_tenant_id_index, message: "Login already taken")
     |> hash_password()
   end
 

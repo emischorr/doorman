@@ -17,6 +17,6 @@ defmodule Data.Repo.Migrations.CreateUsers do
       timestamps()
     end
 
-    create unique_index(:users, [:login, :tenant_id])
+    create unique_index(:users, [:login, :tenant_id], name: :users_login_tenant_id_index)
   end
 end
