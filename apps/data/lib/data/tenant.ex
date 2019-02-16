@@ -41,4 +41,8 @@ defmodule Data.Tenant do
   def delete(id) do
     get(id) |> Repo.delete
   end
+
+  def options do
+    Tenant |> Repo.all() |> Enum.map(&{&1.name, &1.id})
+  end
 end

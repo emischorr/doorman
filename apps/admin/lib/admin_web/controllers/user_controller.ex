@@ -2,6 +2,7 @@ defmodule AdminWeb.UserController do
   use AdminWeb, :controller
 
   alias Data.User
+  alias Data.Tenant
 
   def index(conn, _params) do
     users = User.all()
@@ -10,7 +11,7 @@ defmodule AdminWeb.UserController do
 
   def new(conn, _params) do
     changeset = User.new()
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, tenant_options: Tenant.options)
   end
 
   def create(conn, %{"user" => user_params}) do
@@ -32,7 +33,7 @@ defmodule AdminWeb.UserController do
 
   def edit(conn, %{"id" => id}) do
     {user, changeset} = User.edit(id)
-    render(conn, "edit.html", user: user, changeset: changeset)
+    render(conn, "edit.html", user: user, changeset: changeset, tenant_options: Tenant.options)
   end
 
   def update(conn, %{"id" => id, "user" => user_params}) do
