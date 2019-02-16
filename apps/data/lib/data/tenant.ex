@@ -1,4 +1,5 @@
 defmodule Data.Tenant do
+  alias Ecto.Multi
   alias Data.Repo
   alias Data.Models.Tenant
 

@@ -1,9 +1,11 @@
-<h2 class="page-header">Login</h2>
+<h2 class="page-header">Login to <%= @tenant.name %></h2>
 
 <%= form_for @conn, Routes.session_path(@conn, :create), [as: :user], fn f -> %>
+  <%= hidden_input f, :tenant_code, value: @tenant.code %>
+
   <div class="form-group">
     <label>Username</label>
-    <%= text_input f, :username, class: "form-control" %>
+    <%= text_input f, :login, class: "form-control" %>
   </div>
 
   <div class="form-group">
