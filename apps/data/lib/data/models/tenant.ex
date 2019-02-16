@@ -6,12 +6,15 @@ defmodule Data.Models.Tenant do
   schema "tenants" do
     field :code, :string
     field :name, :string
+    field :allow_subscription, :boolean, default: false
+
+    has_many :users, Data.Models.User
 
     timestamps()
   end
 
   @required_fields ~w(code name)a
-  @optional_fields ~w()a
+  @optional_fields ~w(allow_subscription)a
 
   def by_id(query, id) do
     from t in query,

@@ -14,10 +14,12 @@ defmodule Data.Models.User do
     field :last_login, :utc_datetime
     field :attributes, :map
 
+    belongs_to :tenant, Data.Models.Tenant
+
     timestamps()
   end
 
-  @required_fields ~w(login)a
+  @required_fields ~w(login, tenant_id)a
   @optional_fields ~w(password name lastname email active attributes)a
 
   def by_id(query, id) do

@@ -11,6 +11,7 @@ IO.puts "== Seeding Database =="
 {:ok, admin_tenant} = Repo.insert(%Tenant{
   code: "admin",
   name: "Admin",
+  allow_subscription: false
 }, on_conflict: :nothing)
 
 admin_user_change = User.changeset(%User{}, %{

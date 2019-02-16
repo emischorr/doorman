@@ -25,6 +25,8 @@ defmodule ApiWeb.Router do
   scope "/", ApiWeb do
     pipe_through :browser
 
+    post "/subscribe", UserController, :create
+
     get "/login", SessionController, :login
     post "/login", SessionController, :create
     get "/logout", SessionController, :logout
