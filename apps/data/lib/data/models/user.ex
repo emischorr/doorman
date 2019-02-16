@@ -37,6 +37,11 @@ defmodule Data.Models.User do
     where: u.active == true
   end
 
+  def for_tenant(query, tenant_id) do
+    from u in query,
+    where: u.tenant_id == ^tenant_id
+  end
+
   @doc """
   Creates a changeset based on the `model` and `params`.
 

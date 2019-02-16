@@ -50,8 +50,9 @@ defmodule Data.User do
     get(id) |> Repo.delete
   end
 
-  def authenticate(login_credentials) do
-    user = User |> User.active |> User.by_login(login_credentials["login"]) |> Repo.one
+  def authenticate(login_credentials, tenant_code) do
+    tenant = Data.Tenant.find(tenant_code)
+    user = User |> User.active |> User.for_tenant(tenant.id) |> User.by_login(login_credentials["login"]) |> Repo.one
 
     if user && password_correct?(user, login_credentials["password"]) do
       {:ok, user}

@@ -10,7 +10,7 @@ defmodule AdminWeb.SessionController do
   end
 
   def create(conn, %{"user" => user_params}) do
-    case Data.User.authenticate(user_params) do
+    case Data.User.authenticate(user_params, "admin") do
       {:ok, user} ->
         conn
         |> put_session(:current_user, user)
