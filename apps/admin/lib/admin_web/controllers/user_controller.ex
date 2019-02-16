@@ -27,7 +27,7 @@ defmodule AdminWeb.UserController do
   end
 
   def show(conn, %{"id" => id}) do
-    user = User.get(id)
+    user = User.get(id) |> Data.Repo.preload(:tenant)
     render(conn, "show.html", user: user)
   end
 
