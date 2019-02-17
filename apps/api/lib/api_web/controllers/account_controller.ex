@@ -10,7 +10,6 @@ defmodule ApiWeb.AccountController do
 
       case Data.User.create(user_params) do
         {:ok, user} ->
-          IO.inspect user
           render conn, "account_created.json", user: user
 
         {:error, %Ecto.Changeset{} = changeset} ->

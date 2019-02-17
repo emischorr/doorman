@@ -2,8 +2,6 @@ defmodule ApiWeb.AccountView do
   use ApiWeb, :view
 
   def render("account_created.json", %{user: user}) do
-    IO.inspect user
-    # TODO: get expires_in from config
     %{user: %{
         login: user.login,
         name: user.name,
